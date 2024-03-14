@@ -5,7 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6; /* Improves readability */
+  font-size: 16px; /* Default font size; adjust as needed */
+  color: #cccccc; /* Default text color for light themes; adjust for dark themes */
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

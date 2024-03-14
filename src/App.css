@@ -11,29 +11,38 @@ body, html {
 .app-container {
   display: flex;
   height: 100vh;
+  overflow: auto; /* Allows shadows to be visible */
+}
+
+/* New CSS for spacer and icons-container */
+.spacer {
+  flex-grow: 1;
+}
+
+.icons-container {
+  align-self: center; /* Centers icons horizontally in the sidebar */
 }
 
 /* Navigation Sidebar */
 .navigation-sidebar {
-  width: 250px;
+  width: 100px;
   background-color: #252526;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  border-right: 1px solid #333; /* Subtle border */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Shadow for depth */
+  justify-content: space-between; /* Aligns content to top and bottom */
+  height: 100%; /* Ensures the sidebar takes full height */
 }
 
 .logo {
   margin-bottom: 50px;
   font-size: 20px;
-  color: #4fc3f7;
-}
-
-.logo {
-  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
 }
 
 .logo img {
@@ -52,13 +61,16 @@ body, html {
   flex-grow: 1;
   display: flex;
   padding: 20px;
+  font-size: 0.95rem; /* Slightly smaller font for dense text */
 }
 
 .panel {
   background-color: #2d2d2d;
   margin: 0 10px;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #333; /* Subtle border */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Shadow for depth */
   color: #cccccc;
 }
 
@@ -86,12 +98,26 @@ body, html {
 }
 
 .input-area button {
-  padding: 10px 20px;
-  background-color: #007acc;
+  background-color: #007acc; /* Primary color */
+  color: white; /* Icon color */
   border: none;
-  color: white;
+  padding: 10px;
+  border-radius: 50%; /* Circular shape */
   cursor: pointer;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Fixed width */
+  height: 40px; /* Fixed height to match the width, making it a circle */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+.input-area button:hover {
+  background-color: #005fa3; /* Slightly darker on hover for feedback */
+}
+
+.input-area button:focus {
+  outline: 2px solid #005fa3; /* Focus outline to improve accessibility */
 }
 
 .input-area input:focus, .input-area button:focus {
@@ -113,3 +139,40 @@ body, html {
 strong {
   color: #4fc3f7;
 }
+
+/* Navigation Sidebar Text */
+.navigation-sidebar .icon, .navigation-sidebar .logo {
+  font-size: 1rem; /* Adjust size as needed */
+  font-weight: 500; /* Medium weight for better readability */
+  letter-spacing: 0.02em; /* Slightly increase spacing */
+}
+
+/* Input and Button Text */
+.input-area input, .input-area button {
+  font-size: 1rem;
+  font-weight: 400; /* Regular weight */
+}
+
+/* Output Area Text */
+.output-area p {
+  line-height: 1.4; /* Adjust line height for readability */
+}
+
+/* Enhance code elements, if you have any */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: #2d2d2d; /* Dark background for contrast */
+  color: #4fc3f7; /* Light blue color for visibility */
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* Input Field Glow Effect */
+.input-area input:focus {
+  outline: none; /* Removes the default focus outline */
+  box-shadow: 0 0 1px #808080; /* Glowing effect */
+  border-color: #808080; /* Optional: changes the border color to match the glow */
+}
+
+

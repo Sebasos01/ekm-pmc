@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faCog,
-  faBell,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faBell, faUser } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
 function App() {
@@ -35,14 +31,19 @@ function App() {
         <div className="logo">
           <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Company Logo" />
         </div>
-        <div className="icon">
-          <FontAwesomeIcon icon={faCog} /> Settings
-        </div>
-        <div className="icon">
-          <FontAwesomeIcon icon={faBell} /> Notifications
-        </div>
-        <div className="icon">
-          <FontAwesomeIcon icon={faUser} /> Profile
+        {/* Spacer div to push icons to the bottom */}
+        <div className="spacer"></div>
+        {/* Container for icons */}
+        <div className="icons-container">
+          <div className="icon">
+            <FontAwesomeIcon icon={faCog} />
+          </div>
+          <div className="icon">
+            <FontAwesomeIcon icon={faBell} />
+          </div>
+          <div className="icon">
+            <FontAwesomeIcon icon={faUser} />
+          </div>
         </div>
       </div>
       <div className="main-work-area">
@@ -66,7 +67,9 @@ function App() {
               onChange={handleInputChange}
               placeholder="Ask me anything..."
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} aria-label="Submit">
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
           </div>
         </div>
         <div className="panel panel-right">
