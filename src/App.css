@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1e1e1e;
+  color: #cccccc;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* App Container */
+.app-container {
+  display: flex;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Navigation Sidebar */
+.navigation-sidebar {
+  width: 250px;
+  background-color: #252526;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  margin-bottom: 50px;
+  font-size: 20px;
+  color: #4fc3f7;
+}
+
+.logo {
+  margin-bottom: 50px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.logo img {
+  height: 60px; /* Set the height to your preference */
+  width: auto; /* This ensures the aspect ratio is maintained */
+}
+
+
+.icon {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+/* Main Work Area */
+.main-work-area {
+  flex-grow: 1;
+  display: flex;
+  padding: 20px;
+}
+
+.panel {
+  background-color: #2d2d2d;
+  margin: 0 10px;
+  padding: 20px;
+  border-radius: 5px;
+  color: #cccccc;
+}
+
+.panel-left, .panel-right {
+  flex-grow: 1;
+}
+
+/* Output and Input Area */
+.output-area {
+  margin-bottom: 20px;
+}
+
+.input-area {
+  display: flex;
+}
+
+.input-area input {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #333333;
+  border: 1px solid #454545;
+  color: #cccccc;
+  border-radius: 4px;
+}
+
+.input-area button {
+  padding: 10px 20px;
+  background-color: #007acc;
+  border: none;
   color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.App-link {
-  color: #61dafb;
+.input-area input:focus, .input-area button:focus {
+  outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Enhancements for readability and usability */
+.output-area div {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #3c3c3c;
+  border-radius: 4px;
+}
+
+.output-area p {
+  margin: 5px 0;
+}
+
+strong {
+  color: #4fc3f7;
 }
