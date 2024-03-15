@@ -19,13 +19,11 @@ body, html {
   flex-grow: 1;
 }
 
-.icons-container {
-  align-self: center; /* Centers icons horizontally in the sidebar */
-}
 
 /* Navigation Sidebar */
 .navigation-sidebar {
-  width: 100px;
+  width: 60px; /* Fixed width */
+  flex-shrink: 0; /* Prevents the sidebar from shrinking */
   background-color: #252526;
   display: flex;
   flex-direction: column;
@@ -34,6 +32,13 @@ body, html {
   box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Shadow for depth */
   justify-content: space-between; /* Aligns content to top and bottom */
   height: 100%; /* Ensures the sidebar takes full height */
+}
+
+/* Navigation Sidebar Text */
+.navigation-sidebar .icon, .navigation-sidebar .logo {
+  font-size: 1rem; /* Adjust size as needed */
+  font-weight: 500; /* Medium weight for better readability */
+  letter-spacing: 0.02em; /* Slightly increase spacing */
 }
 
 .logo {
@@ -46,7 +51,7 @@ body, html {
 }
 
 .logo img {
-  height: 60px; /* Set the height to your preference */
+  height: 30px; /* Set the height to your preference */
   width: auto; /* This ensures the aspect ratio is maintained */
 }
 
@@ -56,15 +61,26 @@ body, html {
   cursor: pointer;
 }
 
+.icons-container {
+  align-self: center; /* Centers icons horizontally in the sidebar */
+}
+
+
 /* Main Work Area */
 .main-work-area {
   flex-grow: 1;
   display: flex;
   padding: 20px;
   font-size: 0.95rem; /* Slightly smaller font for dense text */
+  overflow: hidden; /* Prevents overflow from affecting layout */
 }
 
+
 .panel {
+  flex: 1;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
   background-color: #2d2d2d;
   margin: 0 10px;
   padding: 20px;
@@ -76,53 +92,27 @@ body, html {
 
 .panel-left, .panel-right {
   flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 400; /* Regular weight */
+}
+
+/* Panel Left Fixed Size and Scrollable Output */
+.panel-left {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevents resizing due to internal content */
+  margin-right: 20px;
 }
 
 /* Output and Input Area */
 .output-area {
+  flex-grow: 1; /* Allows the area to expand within the container */
+  max-height: calc(100vh - 140px); /* Example max height, adjust based on your layout */
   margin-bottom: 20px;
+  overflow-y: auto; /* Enables vertical scrolling */
+  margin-top: 20px;
 }
 
-.input-area {
-  display: flex;
-}
-
-.input-area input {
-  flex-grow: 1;
-  margin-right: 10px;
-  padding: 10px;
-  background-color: #333333;
-  border: 1px solid #454545;
-  color: #cccccc;
-  border-radius: 4px;
-}
-
-.input-area button {
-  background-color: #007acc; /* Primary color */
-  color: white; /* Icon color */
-  border: none;
-  padding: 10px;
-  border-radius: 50%; /* Circular shape */
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px; /* Fixed width */
-  height: 40px; /* Fixed height to match the width, making it a circle */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-}
-
-.input-area button:hover {
-  background-color: #005fa3; /* Slightly darker on hover for feedback */
-}
-
-.input-area button:focus {
-  outline: 2px solid #005fa3; /* Focus outline to improve accessibility */
-}
-
-.input-area input:focus, .input-area button:focus {
-  outline: none;
-}
 
 /* Enhancements for readability and usability */
 .output-area div {
@@ -134,28 +124,107 @@ body, html {
 
 .output-area p {
   margin: 5px 0;
+  line-height: 1.4; /* Adjust line height for readability */
 }
 
-strong {
-  color: #4fc3f7;
+.response-entry {
+  max-width: 100%; /* Ensures the div doesn’t extend beyond its parent container */
+  word-wrap: break-word; /* Ensures words wrap to prevent horizontal overflow */
 }
 
-/* Navigation Sidebar Text */
-.navigation-sidebar .icon, .navigation-sidebar .logo {
-  font-size: 1rem; /* Adjust size as needed */
-  font-weight: 500; /* Medium weight for better readability */
-  letter-spacing: 0.02em; /* Slightly increase spacing */
+.response-entry p {
+  white-space: pre-wrap; /* Allows the text to wrap and respects whitespace */
+  word-break: break-word; /* Ensures long words do not cause horizontal overflow */
+}
+
+.input-area {
+  display: flex;
+  border: 1px solid #454545; /* Mimics the input border */
+  border-radius: 4px; /* Matches the input border-radius */
+  background-color: #333333;
+  align-items: center;
+  transition: box-shadow 0.3s ease; /* Smooth transition for the glow effect */
+  padding: 10px;
+}
+
+.input-area textarea {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: #cccccc;
+  padding: 10px; /* Match the padding of your input fields */
+  margin-right: 10px; /* Ensure some space between the text area and the button */
+  resize: none; /* Prevent manual resizing */
+  overflow: auto; /* Allow scrolling */
+  min-height: 20px; /* Minimum height */
+  max-height: 100px; /* Maximum height before scrolling */
+  overflow-y: auto; /* Allow vertical scrolling */
+  line-height: 1; /* Adjust based on your design */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match the font of your input fields */
+}
+
+/* Custom scrollbar styles */
+.input-area textarea::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+.input-area textarea::-webkit-scrollbar-track {
+  background-color: #2d2d2d; /* Track color */
+  border-radius: 10px; /* Roundness of the track */
+}
+
+.input-area textarea::-webkit-scrollbar-thumb {
+  background-color: #555; /* Scrollbar handle color */
+  border-radius: 10px; /* Roundness of the handle */
+}
+
+.input-area textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* Scrollbar handle color on hover */
+}
+
+.input-area textarea {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none; /* Removes the input border */
+  color: #cccccc;
+  padding: 10px;
+}
+
+.input-area textarea:focus, .input-area button:focus {
+  outline: none;
+}
+
+.input-area .submit-icon {
+  background-color: transparent; /* No background */
+  border: none; /* No border */
+  padding: 10px;
+  color: #cccccc; /* Icon color */
+  cursor: pointer;
+}
+
+.input-area .submit-icon:focus {
+  outline: none; /* Optional: Removes the focus outline for the button */
+}
+
+.submit-icon.disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 /* Input and Button Text */
-.input-area input, .input-area button {
+.input-area textarea {
   font-size: 1rem;
   font-weight: 400; /* Regular weight */
 }
 
-/* Output Area Text */
-.output-area p {
-  line-height: 1.4; /* Adjust line height for readability */
+.input-area:focus-within {
+  outline: none;
+  box-shadow: 0 0 4px #808080; /* Glowing effect */
+  border-color: #808080; /* Changes the border color to match the glow */
+}
+
+strong {
+  color: #4fc3f7;
 }
 
 /* Enhance code elements, if you have any */
@@ -168,11 +237,23 @@ code {
   border-radius: 4px;
 }
 
-/* Input Field Glow Effect */
-.input-area input:focus {
-  outline: none; /* Removes the default focus outline */
-  box-shadow: 0 0 1px #808080; /* Glowing effect */
-  border-color: #808080; /* Optional: changes the border color to match the glow */
+/* Custom scrollbar styles for output area */
+.output-area::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+.output-area::-webkit-scrollbar-track {
+  background-color: #2d2d2d; /* Track color */
+  border-radius: 10px; /* Roundness of the track */
+}
+
+.output-area::-webkit-scrollbar-thumb {
+  background-color: #555; /* Scrollbar handle color */
+  border-radius: 10px; /* Roundness of the handle */
+}
+
+.output-area::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* Scrollbar handle color on hover */
 }
 
 
